@@ -1,7 +1,7 @@
-object Form1: TForm1
-  Left = 0
+object frmBuscaIBPT: TfrmBuscaIBPT
+  Left = 244
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Busca IBPT'
   ClientHeight = 502
   ClientWidth = 838
   Color = clBtnFace
@@ -15,160 +15,143 @@ object Form1: TForm1
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 141
-    Top = 12
-    Width = 29
-    Height = 13
-    Caption = 'Token'
-  end
-  object Label2: TLabel
-    Left = 150
-    Top = 39
-    Width = 20
-    Height = 13
-    Caption = 'cnpj'
-  end
-  object Label3: TLabel
-    Left = 139
-    Top = 68
-    Width = 31
-    Height = 13
-    Caption = 'codigo'
-  end
-  object Label4: TLabel
-    Left = 160
-    Top = 95
-    Width = 10
-    Height = 13
-    Caption = 'uf'
-  end
-  object Label5: TLabel
-    Left = 158
-    Top = 122
-    Width = 12
-    Height = 13
-    Caption = 'ex'
-  end
-  object Label6: TLabel
-    Left = 125
-    Top = 149
-    Width = 45
-    Height = 13
-    Caption = 'descricao'
-  end
-  object Label7: TLabel
-    Left = 98
-    Top = 176
-    Width = 72
-    Height = 13
-    Caption = 'unidadeMedida'
-  end
-  object Label8: TLabel
-    Left = 146
-    Top = 203
-    Width = 24
-    Height = 13
-    Caption = 'valor'
-  end
-  object Label10: TLabel
-    Left = 152
-    Top = 226
-    Width = 18
-    Height = 13
-    Caption = 'gtin'
-  end
-  object edtToken: TEdit
-    Left = 176
-    Top = 4
-    Width = 385
-    Height = 21
+  object pnlTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 838
+    Height = 54
+    Align = alTop
     TabOrder = 0
+    object btnConsultar: TBitBtn
+      Left = 37
+      Top = 4
+      Width = 115
+      Height = 44
+      Caption = 'Consultar'
+      TabOrder = 0
+      OnClick = btnConsultarClick
+    end
+    object btnAtualizarIBPT: TBitBtn
+      Left = 158
+      Top = 4
+      Width = 115
+      Height = 44
+      Caption = 'Atualizar IBPT'
+      TabOrder = 1
+      OnClick = btnAtualizarIBPTClick
+    end
   end
-  object edtCNPJ: TEdit
-    Left = 176
-    Top = 31
-    Width = 121
-    Height = 21
+  object pnlPrincipal: TPanel
+    Left = 0
+    Top = 54
+    Width = 838
+    Height = 448
+    Align = alClient
     TabOrder = 1
-  end
-  object edtCodigo: TEdit
-    Left = 176
-    Top = 60
-    Width = 121
-    Height = 21
-    TabOrder = 2
-  end
-  object edtUF: TEdit
-    Left = 176
-    Top = 87
-    Width = 121
-    Height = 21
-    TabOrder = 3
-  end
-  object edtEX: TEdit
-    Left = 176
-    Top = 114
-    Width = 121
-    Height = 21
-    TabOrder = 4
-  end
-  object edtDescricao: TEdit
-    Left = 176
-    Top = 141
-    Width = 121
-    Height = 21
-    TabOrder = 5
-  end
-  object edtUnidadeMedida: TEdit
-    Left = 176
-    Top = 168
-    Width = 121
-    Height = 21
-    TabOrder = 6
-  end
-  object edtValor: TEdit
-    Left = 176
-    Top = 195
-    Width = 121
-    Height = 21
-    TabOrder = 7
-  end
-  object Memo1: TMemo
-    Left = 303
-    Top = 31
-    Width = 258
-    Height = 143
-    TabOrder = 8
-  end
-  object edtGtin: TEdit
-    Left = 176
-    Top = 218
-    Width = 121
-    Height = 21
-    TabOrder = 9
-  end
-  object btnBuscar: TBitBtn
-    Left = 303
-    Top = 195
-    Width = 82
-    Height = 44
-    Caption = 'Buscar'
-    TabOrder = 10
-    OnClick = btnBuscarClick
-  end
-  object DBGrid1: TDBGrid
-    Left = 24
-    Top = 280
-    Width = 806
-    Height = 120
-    DataSource = DataSource1
-    TabOrder = 11
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
+    object Memo1: TMemo
+      Left = 1
+      Top = 304
+      Width = 836
+      Height = 143
+      Align = alBottom
+      TabOrder = 0
+    end
+    object SMDBGrid1: TSMDBGrid
+      Left = 1
+      Top = 1
+      Width = 836
+      Height = 279
+      Align = alClient
+      DataSource = dsPadrao
+      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      Flat = False
+      BandsFont.Charset = DEFAULT_CHARSET
+      BandsFont.Color = clWindowText
+      BandsFont.Height = -11
+      BandsFont.Name = 'Tahoma'
+      BandsFont.Style = []
+      Groupings = <>
+      GridStyle.Style = gsSoftGray
+      GridStyle.OddColor = 15000804
+      GridStyle.EvenColor = 16119285
+      TitleHeight.PixelCount = 24
+      FooterColor = clBtnFace
+      ExOptions = [eoENTERlikeTAB, eoKeepSelection, eoStandardPopup, eoBLOBEditor, eoTitleWordWrap, eoFilterAutoApply]
+      RegistryKey = 'Software\Scalabium'
+      RegistrySection = 'SMDBGrid'
+      WidthOfIndicator = 11
+      DefaultRowHeight = 17
+      ScrollBars = ssHorizontal
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'ID'
+          Title.Alignment = taCenter
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ACHOU_IBPT'
+          Title.Alignment = taCenter
+          Title.Caption = 'IBPT'
+          Width = 87
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NCM'
+          Title.Alignment = taCenter
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NOME'
+          Title.Alignment = taCenter
+          Width = 290
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'INATIVO'
+          Title.Alignment = taCenter
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'COD_CEST'
+          Title.Alignment = taCenter
+          Width = 79
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NCM_IBPT'
+          Title.Alignment = taCenter
+          Width = 74
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DT_IBPTFIM'
+          Title.Alignment = taCenter
+          Width = 69
+          Visible = True
+        end>
+    end
+    object ProgressBar1: TProgressBar
+      Left = 1
+      Top = 280
+      Width = 836
+      Height = 24
+      Align = alBottom
+      TabOrder = 2
+    end
   end
   object RESTClient1: TRESTClient
     Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
@@ -178,8 +161,8 @@ object Form1: TForm1
     Params = <>
     HandleRedirects = True
     RaiseExceptionOn500 = False
-    Left = 656
-    Top = 120
+    Left = 568
+    Top = 8
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
@@ -241,92 +224,15 @@ object Form1: TForm1
     Response = RESTResponse1
     SynchronizedEvents = False
     Left = 656
-    Top = 72
+    Top = 8
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 656
-    Top = 24
+    Left = 728
+    Top = 8
   end
-  object DataSource1: TDataSource
-    DataSet = FDMemTable1
-    Left = 224
-    Top = 424
-  end
-  object FDMemTable1: TFDMemTable
-    FieldDefs = <>
-    IndexDefs = <>
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    StoreDefs = True
-    Left = 168
-    Top = 424
-    object FDMemTable1Codigo: TStringField
-      FieldName = 'Codigo'
-    end
-    object FDMemTable1UF: TStringField
-      FieldName = 'UF'
-      Size = 2
-    end
-    object FDMemTable1EX: TStringField
-      FieldName = 'EX'
-      Size = 1
-    end
-    object FDMemTable1Descricao: TStringField
-      FieldName = 'Descricao'
-      Size = 150
-    end
-    object FDMemTable1Nacional: TFloatField
-      FieldName = 'Nacional'
-    end
-    object FDMemTable1Estadual: TFloatField
-      FieldName = 'Estadual'
-    end
-    object FDMemTable1Importado: TFloatField
-      FieldName = 'Importado'
-    end
-    object FDMemTable1Municipal: TFloatField
-      FieldName = 'Municipal'
-    end
-    object FDMemTable1Tipo: TStringField
-      FieldName = 'Tipo'
-      Size = 1
-    end
-    object FDMemTable1VigenciaInicio: TDateField
-      FieldName = 'VigenciaInicio'
-    end
-    object FDMemTable1VigenciaFim: TDateField
-      FieldName = 'VigenciaFim'
-    end
-    object FDMemTable1Chave: TStringField
-      FieldName = 'Chave'
-    end
-    object FDMemTable1Versao: TStringField
-      FieldName = 'Versao'
-    end
-    object FDMemTable1Fonte: TStringField
-      FieldName = 'Fonte'
-      Size = 100
-    end
-    object FDMemTable1Valor: TFloatField
-      FieldName = 'Valor'
-    end
-    object FDMemTable1ValorTributoNacional: TFloatField
-      FieldName = 'ValorTributoNacional'
-    end
-    object FDMemTable1ValorTributoEstadual: TFloatField
-      FieldName = 'ValorTributoEstadual'
-    end
-    object FDMemTable1ValorTributoImportado: TFloatField
-      FieldName = 'ValorTributoImportado'
-    end
-    object FDMemTable1ValorTributoMunicipal: TFloatField
-      FieldName = 'ValorTributoMunicipal'
-    end
+  object dsPadrao: TDataSource
+    Left = 568
+    Top = 112
   end
 end

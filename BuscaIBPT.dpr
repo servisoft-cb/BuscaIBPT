@@ -2,7 +2,7 @@ program BuscaIBPT;
 
 uses
   Vcl.Forms,
-  uConsultaIBPT in 'uConsultaIBPT.pas' {Form1},
+  uConsultaIBPT in 'uConsultaIBPT.pas' {frmBuscaIBPT},
   DmdConnection in 'DmdConnection.pas' {DMConection: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
@@ -13,8 +13,9 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Cyan Dusk');
   Application.CreateForm(TDMConection, DMConection);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmBuscaIBPT, frmBuscaIBPT);
   Application.CreateForm(TDMCadNCM, DMCadNCM);
   Application.Run;
 end.
