@@ -270,10 +270,10 @@ object DMCadNCM: TDMCadNCM
       FieldName = 'Tipo'
       Size = 1
     end
-    object mtIBPTVigenciaInicio: TDateField
+    object mtIBPTVigenciaInicio: TDateTimeField
       FieldName = 'VigenciaInicio'
     end
-    object mtIBPTVigenciaFim: TDateField
+    object mtIBPTVigenciaFim: TDateTimeField
       FieldName = 'VigenciaFim'
     end
     object mtIBPTChave: TStringField

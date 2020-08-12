@@ -92,12 +92,14 @@ object frmBuscaIBPT: TfrmBuscaIBPT
         item
           Expanded = False
           FieldName = 'ID'
+          ReadOnly = True
           Title.Alignment = taCenter
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'ACHOU_IBPT'
+          ReadOnly = True
           Title.Alignment = taCenter
           Title.Caption = 'IBPT'
           Width = 87
@@ -106,12 +108,14 @@ object frmBuscaIBPT: TfrmBuscaIBPT
         item
           Expanded = False
           FieldName = 'NCM'
+          ReadOnly = True
           Title.Alignment = taCenter
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'NOME'
+          ReadOnly = True
           Title.Alignment = taCenter
           Width = 290
           Visible = True
@@ -119,12 +123,14 @@ object frmBuscaIBPT: TfrmBuscaIBPT
         item
           Expanded = False
           FieldName = 'INATIVO'
+          ReadOnly = True
           Title.Alignment = taCenter
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'COD_CEST'
+          ReadOnly = True
           Title.Alignment = taCenter
           Width = 79
           Visible = True
@@ -132,6 +138,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
         item
           Expanded = False
           FieldName = 'NCM_IBPT'
+          ReadOnly = True
           Title.Alignment = taCenter
           Width = 74
           Visible = True
@@ -139,6 +146,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
         item
           Expanded = False
           FieldName = 'DT_IBPTFIM'
+          ReadOnly = True
           Title.Alignment = taCenter
           Width = 69
           Visible = True

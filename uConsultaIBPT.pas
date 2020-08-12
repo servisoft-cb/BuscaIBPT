@@ -122,6 +122,17 @@ begin
   fDMCadNCM.qryParametro_NFe.Open;
   vIBPT_Token := fDMCadNCM.qryParametro_NFeTOKEN_IBPT.AsString;
   vCNPJ := '09312127000110';
+
+  Refresh;
+  Sleep(1000);
+  btnConsultarClick(Sender);
+  if fDMCadNCM.qryConsultaNCM.RecordCount > 0 then
+  begin
+    btnAtualizarIBPTClick(Sender);
+    btnAtualizarIBPTClick(Sender);
+    if fDMCadNCM.qryConsultaNCM.RecordCount > 0 then
+      MessageDlg('*** Verificar as NCMs que estão na consulta', mtWarning, [mbOk], 0);
+  end;
 end;
 
 procedure TfrmBuscaIBPT.JsonToDataset(aDataSet: TDataSet; aJson: string);
@@ -137,8 +148,10 @@ begin
     vConv.Dataset := aDataSet;
     vConv.UpdateDataSet(JObj);
   finally
-    vConv.Free;
-    JObj.Free;
+    if Assigned(vConv) then
+      vConv.Free;
+    if Assigned(JObj) then
+      JObj.Free;
   end;
 end;
 
@@ -158,8 +171,8 @@ begin
   BaseUrl := BaseUrl + '&gtin=' + Trim(vIBPT_Gtin);
   RESTClient1.BaseURL := UrlIBPT + BaseUrl;
   RESTRequest1.Execute;
-  JsonToDataset(fDMCadNCM.mtIBPT, RESTResponse1.JSONValue.ToString);
   JsonString := RESTResponse1.JSONValue.ToString;
+  JsonToDataset(fDMCadNCM.mtIBPT, RESTResponse1.JSONValue.ToString);
   if RESTResponse1.StatusCode = 200 then
   begin
 //    Memo1.Lines.Add(JsonString);

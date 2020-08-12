@@ -168,8 +168,8 @@ begin
       qry.ParamByName('TABELA').AsString  := NomeTabela;
       qry.ParamByName('FILIAL').AsInteger := Filial;
       qry.ParamByName('SERIE').AsInteger := StrToInt(SerieCupom);
-      sds.Open;
-      iSeq := sds.FieldByName('NUMREGISTRO').AsInteger;
+      qry.Open;
+      iSeq := qry.FieldByName('NUMREGISTRO').AsInteger;
 
       DMConection.FDConnection.Commit;
       Result := iSeq;

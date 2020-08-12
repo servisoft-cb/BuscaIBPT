@@ -55,8 +55,6 @@ type
     mtIBPTImportado: TFloatField;
     mtIBPTMunicipal: TFloatField;
     mtIBPTTipo: TStringField;
-    mtIBPTVigenciaInicio: TDateField;
-    mtIBPTVigenciaFim: TDateField;
     mtIBPTChave: TStringField;
     mtIBPTVersao: TStringField;
     mtIBPTFonte: TStringField;
@@ -65,6 +63,8 @@ type
     mtIBPTValorTributoEstadual: TFloatField;
     mtIBPTValorTributoImportado: TFloatField;
     mtIBPTValorTributoMunicipal: TFloatField;
+    mtIBPTVigenciaInicio: TDateTimeField;
+    mtIBPTVigenciaFim: TDateTimeField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
