@@ -79,8 +79,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <DCC_ExeOutput>C:\Delphi10\AtualizaIBPT\EXE</DCC_ExeOutput>
-        <DCC_DcpOutput>C:\Delphi10\AtualizaIBPT\EXE</DCC_DcpOutput>
+        <DCC_ExeOutput>C:\Delphi7\SSFacil\EXE\</DCC_ExeOutput>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -96,7 +95,7 @@
         <BRCC_IncludePath>C:\Delphi7\SSFacil\EXE;$(BRCC_IncludePath)</BRCC_IncludePath>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.1;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Build>1</VerInfo_Build>
-        <DCC_ExeOutput>C:\Delphi10\AtualizaIBPT\EXE</DCC_ExeOutput>
+        <DCC_ExeOutput>C:\Delphi7\SSFacil\EXE\</DCC_ExeOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <AppEnableHighDPI>true</AppEnableHighDPI>

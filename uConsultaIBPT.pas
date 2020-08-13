@@ -27,6 +27,7 @@ type
     btnAtualizarIBPT: TBitBtn;
     SMDBGrid1: TSMDBGrid;
     ProgressBar1: TProgressBar;
+    ckUsaProduto: TCheckBox;
     procedure FormShow(Sender: TObject);
     procedure btnAtualizarIBPTClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
@@ -54,6 +55,8 @@ type
     procedure JsonToDataset (aDataSet : TDataSet; aJson : string);
     procedure MontaBaseURL;
     procedure Consultar;
+    procedure prc_Form_Aguarde(Form: TForm);
+
   public
     { Public declarations }
   end;
@@ -72,6 +75,7 @@ end;
 
 procedure TfrmBuscaIBPT.btnAtualizarIBPTClick(Sender: TObject);
 begin
+  Memo1.Lines.Clear;
   if vIBPT_Token = EmptyStr then
     Application.MessageBox('Token do IBPT não informado no parâmetro!', 'ATENÇÃO', MB_OK + MB_ICONWARNING);
   if fDMCadNCM.qryConsultaNCM.IsEmpty then
@@ -101,20 +105,30 @@ begin
     fDMCadNCM.qryConsultaNCM.EnableControls;
     btnAtualizarIBPT.Enabled := True;
   end;
+  Consultar;
+  if fDMCadNCM.qryConsultaNCM.RecordCount > 0 then
+    MessageDlg('*** Verificar as NCMs que estão na consulta', mtWarning, [mbOk], 0);
+
 end;
 
 procedure TfrmBuscaIBPT.Consultar;
 begin
   fDMCadNCM.qryConsultaNCM.Close;
-  fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.ctComand
+  fDMCadNCM.qryConsultaNCM.SQL.Text := 'SELECT AUX.* FROM ( ' + fDMCadNCM.ctComand
                                          + 'WHERE ((N.ibpt_inativo = ' +QuotedStr('N') + ') or (N.ibpt_inativo IS NULL)) '
                                          + '  AND ((N.inativo = ' +QuotedStr('N') + ') or (N.inativo IS NULL)) '
                                          + '  AND ((IBPT.DT_FINAL < :DATA) or (IBPT.DT_FINAL IS NULL))';
+  fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ') AUX';
+  if ckUsaProduto.Checked then
+    fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ' WHERE AUX.CONTADOR > 0 ';
   fDMCadNCM.qryConsultaNCM.ParamByName('DATA').AsDate := Date;
+
   fDMCadNCM.qryConsultaNCM.Open;
 end;
 
 procedure TfrmBuscaIBPT.FormShow(Sender: TObject);
+var
+  Form: TForm;
 begin
   fDMCadNCM := TDMCadNCM.Create(Self);
   dsPadrao.DataSet := fDMCadNCM.qryConsultaNCM;
@@ -123,16 +137,20 @@ begin
   vIBPT_Token := fDMCadNCM.qryParametro_NFeTOKEN_IBPT.AsString;
   vCNPJ := '09312127000110';
 
-  Refresh;
-  Sleep(1000);
-  btnConsultarClick(Sender);
-  if fDMCadNCM.qryConsultaNCM.RecordCount > 0 then
-  begin
-    btnAtualizarIBPTClick(Sender);
-    btnAtualizarIBPTClick(Sender);
+  Form := TForm.Create(Application);
+  prc_Form_Aguarde(Form);
+
+  try
+    btnConsultarClick(Sender);
     if fDMCadNCM.qryConsultaNCM.RecordCount > 0 then
-      MessageDlg('*** Verificar as NCMs que estão na consulta', mtWarning, [mbOk], 0);
+    begin
+      btnAtualizarIBPTClick(Sender);
+      //btnConsultarClick(Sender);
+    end;
+  finally
+    FreeAndNil(Form);
   end;
+
 end;
 
 procedure TfrmBuscaIBPT.JsonToDataset(aDataSet: TDataSet; aJson: string);
@@ -183,6 +201,39 @@ begin
   end
   else
     Memo1.Lines.Add(vIBPT_NCM + 'Erro ao Atualizar');
+end;
+
+procedure TfrmBuscaIBPT.prc_Form_Aguarde(Form: TForm);
+var
+  MSG: Tlabel;
+  Borda: TShape;
+begin
+  //Form := TForm.Create(Application);
+  Form.BorderStyle := bsNone;
+  Form.Position := poDesktopCenter;
+  Form.Width := 650;
+  Form.Height := 45; // até aqui criamos o form
+
+  Borda := TShape.Create(Application);
+  Borda.Parent := Form;
+  Borda.Align := alClient; // uma borda envolta do form
+
+  MSG := Tlabel.Create(Application);
+  MSG.Parent := Form;
+  MSG.Transparent := true;
+  MSG.AutoSize := False;
+  MSG.Font.Name := 'Verdana';
+  MSG.Font.Size := 25;
+  MSG.Width := 640;
+  MSG.Height := 42;
+  MSG.Caption := '... Atualizando IBPT ... AGUARDE ...';
+  MSG.Alignment := taCenter; // label com a mensagem "Aguarde"
+
+  Form.Show;
+  Form.Update;
+
+  //Form.Free; // Vai limpar na origem da chamada
+
 end;
 
 end.

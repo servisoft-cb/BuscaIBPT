@@ -107,6 +107,7 @@ begin
       qryTab_IBPT.Edit
     else
       Inserir_Tab_IBPT;
+    qryTab_IBPT.FieldByName('CODIGO').AsString := mtIBPTCodigo.AsString;
     qryTab_IBPT.FieldByName('PERC_NACIONAL').AsFloat := mtIBPTNacional.AsFloat;
     qryTab_IBPT.FieldByName('PERC_IMPORTACAO').AsFloat := mtIBPTImportado.AsFloat;
     qryTab_IBPT.FieldByName('PERC_ESTADUAL').AsFloat := mtIBPTEstadual.AsFloat;

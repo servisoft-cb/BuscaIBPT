@@ -223,7 +223,9 @@ object DMCadNCM: TDMCadNCM
       end
       item
         Name = 'EX'
+        DataType = ftString
         ParamType = ptInput
+        Size = 2
       end>
   end
   object mtIBPT: TFDMemTable

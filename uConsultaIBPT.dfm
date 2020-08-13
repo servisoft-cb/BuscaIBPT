@@ -40,6 +40,16 @@ object frmBuscaIBPT: TfrmBuscaIBPT
       TabOrder = 1
       OnClick = btnAtualizarIBPTClick
     end
+    object ckUsaProduto: TCheckBox
+      Left = 304
+      Top = 17
+      Width = 241
+      Height = 17
+      Caption = 'Mostrar somente NCM usados nos Produtos'
+      Ctl3D = False
+      ParentCtl3D = False
+      TabOrder = 2
+    end
   end
   object pnlPrincipal: TPanel
     Left = 0
@@ -117,7 +127,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
           FieldName = 'NOME'
           ReadOnly = True
           Title.Alignment = taCenter
-          Width = 290
+          Width = 210
           Visible = True
         end
         item
@@ -125,6 +135,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
           FieldName = 'INATIVO'
           ReadOnly = True
           Title.Alignment = taCenter
+          Title.Caption = 'Inativo'
+          Width = 40
           Visible = True
         end
         item
@@ -132,7 +144,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
           FieldName = 'COD_CEST'
           ReadOnly = True
           Title.Alignment = taCenter
-          Width = 79
+          Title.Caption = 'COD CEST'
           Visible = True
         end
         item
@@ -140,7 +152,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
           FieldName = 'NCM_IBPT'
           ReadOnly = True
           Title.Alignment = taCenter
-          Width = 74
+          Title.Caption = 'NCM IBPT'
           Visible = True
         end
         item
@@ -149,6 +161,13 @@ object frmBuscaIBPT: TfrmBuscaIBPT
           ReadOnly = True
           Title.Alignment = taCenter
           Width = 69
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CONTADOR'
+          Title.Caption = 'Qtd. de Produtos'
+          Width = 100
           Visible = True
         end>
     end
