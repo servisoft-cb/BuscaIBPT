@@ -28,6 +28,7 @@ type
     SMDBGrid1: TSMDBGrid;
     ProgressBar1: TProgressBar;
     ckUsaProduto: TCheckBox;
+    Label1: TLabel;
     procedure FormShow(Sender: TObject);
     procedure btnAtualizarIBPTClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);
@@ -52,6 +53,8 @@ type
     vIBPT_Importado : Real;
     vIBPT_Municipal : Real;
     vIBPT_Nacional : Real;
+    vQtd_Produto : Integer;
+
     procedure JsonToDataset (aDataSet : TDataSet; aJson : string);
     procedure MontaBaseURL;
     procedure Consultar;
@@ -97,6 +100,7 @@ begin
         vIBPT_UnidadeMedida := '';
         vIBPT_Valor := '0';
         vIBPT_Gtin := '';
+        vQtd_Produto := qryConsultaNCMCONTADOR.AsInteger;
         MontaBaseURL;
         qryConsultaNCM.Next;
       end;
@@ -198,7 +202,12 @@ begin
     if fDMCadNCM.mtIBPTCodigo.AsString <> EmptyStr then
       fDMCadNCM.Gravar_Retorno(vIBPT_NCM)
     else
-      Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado!');
+    begin
+      if vQtd_Produto > 0 then
+        Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado,  mas possui ' + IntToStr(vQtd_Produto) + '  Produto(s) com cadastro(s)!' )
+      else
+        Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado!');
+    end
   end
   else
     Memo1.Lines.Add(vIBPT_NCM + 'Erro ao Atualizar');

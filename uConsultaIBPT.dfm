@@ -22,6 +22,22 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Height = 54
     Align = alTop
     TabOrder = 0
+    ExplicitLeft = 16
+    object Label1: TLabel
+      Left = 548
+      Top = 4
+      Width = 277
+      Height = 26
+      Caption = 
+        'NCM N'#227'o encontrato, mas possui cadastro de produtos..'#13'   Solu'#231#227'o' +
+        ': Entrar no cadastro do produto e alterar o NCM'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMaroon
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
     object btnConsultar: TBitBtn
       Left = 37
       Top = 4
