@@ -115,9 +115,10 @@ procedure TfrmBuscaIBPT.Consultar;
 begin
   fDMCadNCM.qryConsultaNCM.Close;
   fDMCadNCM.qryConsultaNCM.SQL.Text := 'SELECT AUX.* FROM ( ' + fDMCadNCM.ctComand
-                                         + 'WHERE ((N.ibpt_inativo = ' +QuotedStr('N') + ') or (N.ibpt_inativo IS NULL)) '
+                                         + 'WHERE (((N.ibpt_inativo = ' +QuotedStr('N') + ') or (N.ibpt_inativo IS NULL)) '
                                          + '  AND ((N.inativo = ' +QuotedStr('N') + ') or (N.inativo IS NULL)) '
-                                         + '  AND ((IBPT.DT_FINAL < :DATA) or (IBPT.DT_FINAL IS NULL))';
+                                         + '  AND ((IBPT.DT_FINAL < :DATA) or (IBPT.DT_FINAL IS NULL)) '
+                                         + ' or (IBPT.CODIGO is null))';
   fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ') AUX';
   if ckUsaProduto.Checked then
     fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ' WHERE AUX.CONTADOR > 0 ';
