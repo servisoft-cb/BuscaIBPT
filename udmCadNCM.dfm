@@ -21,7 +21,8 @@ object DMCadNCM: TDMCadNCM
       'left join TAB_CSTIPI I on N.ID_CSTIPI = I.ID'
       
         'left join TAB_IBPT IBPT on N.NCM = IBPT.CODIGO and COALESCE(IBPT' +
-        '.EX,'#39#39') = '#39#39)
+        '.EX,'#39#39') = '#39#39
+      '')
     Left = 32
     Top = 24
     object qryConsultaNCMID: TIntegerField
@@ -191,7 +192,7 @@ object DMCadNCM: TDMCadNCM
   end
   object dsConsultaNCM: TDataSource
     DataSet = qryConsultaNCM
-    Left = 96
+    Left = 120
     Top = 24
   end
   object qryParametro_NFe: TFDQuery
