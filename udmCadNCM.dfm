@@ -1,5 +1,4 @@
 object DMCadNCM: TDMCadNCM
-  OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 341
   Width = 510

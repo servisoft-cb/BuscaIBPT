@@ -9,7 +9,8 @@ uses
   Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, REST.Response.Adapter,
-  udmCadNCM, Vcl.ExtCtrls, SMDBGrid, Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls;
+  udmCadNCM, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.ComCtrls,
+  REST.Types;
 
 const
   UrlIBPT = 'https://apidoni.ibpt.org.br/api/v1/produtos';
@@ -25,10 +26,10 @@ type
     Memo1: TMemo;
     btnConsultar: TBitBtn;
     btnAtualizarIBPT: TBitBtn;
-    SMDBGrid1: TSMDBGrid;
     ProgressBar1: TProgressBar;
     ckUsaProduto: TCheckBox;
     Label1: TLabel;
+    DBGrid1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure btnAtualizarIBPTClick(Sender: TObject);
     procedure btnConsultarClick(Sender: TObject);

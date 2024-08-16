@@ -10,10 +10,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesigned
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object pnlTop: TPanel
     Left = 0
@@ -22,7 +20,6 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Height = 54
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 16
     object Label1: TLabel
       Left = 548
       Top = 4
@@ -81,111 +78,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
       Height = 143
       Align = alBottom
       TabOrder = 0
-    end
-    object SMDBGrid1: TSMDBGrid
-      Left = 1
-      Top = 1
-      Width = 836
-      Height = 279
-      Align = alClient
-      DataSource = dsPadrao
-      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-      TabOrder = 1
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Flat = False
-      BandsFont.Charset = DEFAULT_CHARSET
-      BandsFont.Color = clWindowText
-      BandsFont.Height = -11
-      BandsFont.Name = 'Tahoma'
-      BandsFont.Style = []
-      Groupings = <>
-      GridStyle.Style = gsSoftGray
-      GridStyle.OddColor = 15000804
-      GridStyle.EvenColor = 16119285
-      TitleHeight.PixelCount = 24
-      FooterColor = clBtnFace
-      ExOptions = [eoENTERlikeTAB, eoKeepSelection, eoStandardPopup, eoBLOBEditor, eoTitleWordWrap, eoFilterAutoApply]
-      RegistryKey = 'Software\Scalabium'
-      RegistrySection = 'SMDBGrid'
-      WidthOfIndicator = 11
-      DefaultRowHeight = 17
-      ScrollBars = ssHorizontal
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'ID'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'ACHOU_IBPT'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Title.Caption = 'IBPT'
-          Width = 87
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'NCM'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'NOME'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Width = 210
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'INATIVO'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Title.Caption = 'Inativo'
-          Width = 40
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'COD_CEST'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Title.Caption = 'COD CEST'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'NCM_IBPT'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Title.Caption = 'NCM IBPT'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DT_IBPTFIM'
-          ReadOnly = True
-          Title.Alignment = taCenter
-          Width = 69
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'CONTADOR'
-          Title.Caption = 'Qtd. de Produtos'
-          Width = 100
-          Visible = True
-        end>
+      ExplicitTop = 310
     end
     object ProgressBar1: TProgressBar
       Left = 1
@@ -193,7 +86,21 @@ object frmBuscaIBPT: TfrmBuscaIBPT
       Width = 836
       Height = 24
       Align = alBottom
+      TabOrder = 1
+    end
+    object DBGrid1: TDBGrid
+      Left = 1
+      Top = 1
+      Width = 836
+      Height = 279
+      Align = alClient
+      DataSource = dsPadrao
       TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
     end
   end
   object RESTClient1: TRESTClient
@@ -202,8 +109,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     BaseURL = 'https://apidoni.ibpt.org.br/api/v1/produtos'
     ContentType = 'application/json'
     Params = <>
-    HandleRedirects = True
     RaiseExceptionOn500 = False
+    SynchronizedEvents = False
     Left = 568
     Top = 8
   end
@@ -212,55 +119,55 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Params = <
       item
         Kind = pkURLSEGMENT
-        name = 'token'
+        Name = 'token'
         Options = [poAutoCreated]
         Value = '8bz6ceDhIVRvZcVrlNPcIH1k1P5V2Y8KdF-uQLMan7PTclkTIMc04GywEsodZ0T6'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'cnpj'
+        Name = 'cnpj'
         Options = [poAutoCreated]
         Value = '09312127000110'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'codigo'
+        Name = 'codigo'
         Options = [poAutoCreated]
         Value = '02102000'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'uf'
+        Name = 'uf'
         Options = [poAutoCreated]
         Value = 'RS'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'ex'
+        Name = 'ex'
         Options = [poAutoCreated]
         Value = '0'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'codigoInterno'
+        Name = 'codigoInterno'
         Options = [poAutoCreated]
         Value = '0'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'descricao'
+        Name = 'descricao'
         Options = [poAutoCreated]
         Value = 'FILE MIGNON'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'valor'
+        Name = 'valor'
         Options = [poAutoCreated]
         Value = '37'
       end
       item
         Kind = pkURLSEGMENT
-        name = 'gtin'
+        Name = 'gtin'
         Options = [poAutoCreated]
         Value = '0'
       end>
