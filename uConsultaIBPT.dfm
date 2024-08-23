@@ -20,6 +20,7 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Height = 54
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 836
     object Label1: TLabel
       Left = 548
       Top = 4
@@ -71,6 +72,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Height = 448
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 836
+    ExplicitHeight = 444
     object Memo1: TMemo
       Left = 1
       Top = 304
@@ -78,7 +81,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
       Height = 143
       Align = alBottom
       TabOrder = 0
-      ExplicitTop = 310
+      ExplicitTop = 300
+      ExplicitWidth = 834
     end
     object ProgressBar1: TProgressBar
       Left = 1
@@ -87,6 +91,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
       Height = 24
       Align = alBottom
       TabOrder = 1
+      ExplicitTop = 276
+      ExplicitWidth = 834
     end
     object DBGrid1: TDBGrid
       Left = 1
