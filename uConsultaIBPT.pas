@@ -28,7 +28,6 @@ type
     btnAtualizarIBPT: TBitBtn;
     ProgressBar1: TProgressBar;
     ckUsaProduto: TCheckBox;
-    Label1: TLabel;
     DBGrid1: TDBGrid;
     procedure FormShow(Sender: TObject);
     procedure btnAtualizarIBPTClick(Sender: TObject);
@@ -54,7 +53,6 @@ type
     vIBPT_Importado : Real;
     vIBPT_Municipal : Real;
     vIBPT_Nacional : Real;
-    vQtd_Produto : Integer;
 
     procedure JsonToDataset (aDataSet : TDataSet; aJson : string);
     procedure MontaBaseURL;
@@ -91,6 +89,7 @@ begin
     with fDMCadNCM do
     begin
       qryConsultaNCM.DisableControls;
+      qryConsultaNCM.First;
       while not qryConsultaNCM.Eof do
       begin
         ProgressBar1.Position := ProgressBar1.Position + 1;
@@ -101,7 +100,6 @@ begin
         vIBPT_UnidadeMedida := '';
         vIBPT_Valor := '0';
         vIBPT_Gtin := '';
-        vQtd_Produto := qryConsultaNCMCONTADOR.AsInteger;
         MontaBaseURL;
         qryConsultaNCM.Next;
       end;
@@ -119,16 +117,7 @@ end;
 procedure TfrmBuscaIBPT.Consultar;
 begin
   fDMCadNCM.qryConsultaNCM.Close;
-  fDMCadNCM.qryConsultaNCM.SQL.Text := 'SELECT AUX.* FROM ( ' + fDMCadNCM.ctComand
-                                         + 'WHERE (((N.ibpt_inativo = ' +QuotedStr('N') + ') or (N.ibpt_inativo IS NULL)) '
-                                         + '  AND ((N.inativo = ' +QuotedStr('N') + ') or (N.inativo IS NULL)) '
-                                         + '  AND ((IBPT.DT_FINAL < :DATA) or (IBPT.DT_FINAL IS NULL)) '
-                                         + ' or (IBPT.CODIGO is null))';
-  fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ') AUX';
-  if ckUsaProduto.Checked then
-    fDMCadNCM.qryConsultaNCM.SQL.Text := fDMCadNCM.qryConsultaNCM.SQL.Text + ' WHERE AUX.CONTADOR > 0 ';
   fDMCadNCM.qryConsultaNCM.ParamByName('DATA').AsDate := Date;
-
   fDMCadNCM.qryConsultaNCM.Open;
 end;
 
@@ -199,19 +188,13 @@ begin
   JsonToDataset(fDMCadNCM.mtIBPT, RESTResponse1.JSONValue.ToString);
   if RESTResponse1.StatusCode = 200 then
   begin
-//    Memo1.Lines.Add(JsonString);
     if fDMCadNCM.mtIBPTCodigo.AsString <> EmptyStr then
       fDMCadNCM.Gravar_Retorno(vIBPT_NCM)
     else
-    begin
-      if vQtd_Produto > 0 then
-        Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado,  mas possui ' + IntToStr(vQtd_Produto) + '  Produto(s) com cadastro(s)!' )
-      else
-        Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado!');
-    end
+      Memo1.Lines.Add(vIBPT_NCM + ' Ncm não encontrado!');
   end
   else
-    Memo1.Lines.Add(vIBPT_NCM + 'Erro ao Atualizar');
+    Memo1.Lines.Add(vIBPT_NCM + 'Erro ao Atualizar' + #13 + 'Status: ' + IntToStr(RESTResponse1.StatusCode));
 end;
 
 procedure TfrmBuscaIBPT.prc_Form_Aguarde(Form: TForm);

@@ -12,36 +12,6 @@ type
   TDMCadNCM = class(TDataModule)
     qryConsultaNCM: TFDQuery;
     dsConsultaNCM: TDataSource;
-    qryConsultaNCMID: TIntegerField;
-    qryConsultaNCMNCM: TStringField;
-    qryConsultaNCMNOME: TStringField;
-    qryConsultaNCMPERC_RED_STRIB: TFloatField;
-    qryConsultaNCMGERAR_ST: TStringField;
-    qryConsultaNCMINATIVO: TStringField;
-    qryConsultaNCMTIPO_AS: TStringField;
-    qryConsultaNCMCOD_PRINCIPAL: TStringField;
-    qryConsultaNCMUSAR_MVA_UF_DESTINO: TStringField;
-    qryConsultaNCMCOD_CEST: TStringField;
-    qryConsultaNCMUNIDADE_TRIB: TStringField;
-    qryConsultaNCMID_CFOP: TIntegerField;
-    qryConsultaNCMID_PIS: TIntegerField;
-    qryConsultaNCMID_COFINS: TIntegerField;
-    qryConsultaNCMID_CST_ICMS: TIntegerField;
-    qryConsultaNCMPERC_PIS: TFloatField;
-    qryConsultaNCMPERC_COFINS: TFloatField;
-    qryConsultaNCMPERC_BASE_ICMS: TFloatField;
-    qryConsultaNCMID_OBS_LEI: TIntegerField;
-    qryConsultaNCMPERC_ICMS: TFloatField;
-    qryConsultaNCMPERC_IPI: TFloatField;
-    qryConsultaNCMID_CSTIPI: TIntegerField;
-    qryConsultaNCMTIPO_ESCALA: TStringField;
-    qryConsultaNCMCALCULA_FCP: TStringField;
-    qryConsultaNCMIBPT_INATIVO: TStringField;
-    qryConsultaNCMCOD_IPI: TStringField;
-    qryConsultaNCMNCM_IBPT: TStringField;
-    qryConsultaNCMDT_IBPTFIM: TDateField;
-    qryConsultaNCMACHOU_IBPT: TStringField;
-    qryConsultaNCMCONTADOR: TIntegerField;
     qryParametro_NFe: TFDQuery;
     qryParametro_NFeTOKEN_IBPT: TStringField;
     qryTab_IBPT: TFDQuery;
@@ -65,6 +35,9 @@ type
     mtIBPTValorTributoMunicipal: TFloatField;
     mtIBPTVigenciaInicio: TDateTimeField;
     mtIBPTVigenciaFim: TDateTimeField;
+    qryConsultaNCMNCM: TStringField;
+    qryConsultaNCMDT_IBPTFIM: TDateField;
+    qryConsultaNCMNOME: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

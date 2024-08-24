@@ -21,21 +21,6 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Align = alTop
     TabOrder = 0
     ExplicitWidth = 836
-    object Label1: TLabel
-      Left = 548
-      Top = 4
-      Width = 277
-      Height = 26
-      Caption = 
-        'NCM N'#227'o encontrato, mas possui cadastro de produtos..'#13'   Solu'#231#227'o' +
-        ': Entrar no cadastro do produto e alterar o NCM'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clMaroon
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-    end
     object btnConsultar: TBitBtn
       Left = 37
       Top = 4
@@ -117,8 +102,8 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Params = <>
     RaiseExceptionOn500 = False
     SynchronizedEvents = False
-    Left = 568
-    Top = 8
+    Left = 536
+    Top = 64
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
@@ -180,12 +165,12 @@ object frmBuscaIBPT: TfrmBuscaIBPT
     Response = RESTResponse1
     SynchronizedEvents = False
     Left = 656
-    Top = 8
+    Top = 48
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 728
-    Top = 8
+    Left = 712
+    Top = 128
   end
   object dsPadrao: TDataSource
     Left = 568
